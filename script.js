@@ -217,8 +217,10 @@ document.getElementById('backTop').addEventListener('click',()=>window.scrollTo(
 
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
-burger.addEventListener('click',()=>navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+burger.addEventListener('click',()=>{
+  navLinks.classList.toggle('open');
+  burger.classList.toggle('active');
+});navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 
 /* ================= REVEAL ON SCROLL ================= */
 function observeReveal(){
@@ -313,6 +315,7 @@ document.addEventListener('click',e=>{
   setTimeout(()=>circle.remove(),700);
 });
 /* ================= FORM → WHATSAPP ================= */
+/* ================= FORM → GOOGLE SHEET + WHATSAPP ================= */
 const contactForm = document.getElementById('contactForm');
 if(contactForm){
   contactForm.addEventListener('submit', function(e){
@@ -323,14 +326,23 @@ if(contactForm){
     const email = document.getElementById('cfEmail').value.trim();
     const message = document.getElementById('cfMessage').value.trim();
 
+    // رابط Web App بتاع Google Apps Script
+const sheetURL = 'https://script.google.com/macros/s/AKfycbwOGESaRMaBJdEWOrFyzqO1BcMTMMpL_uKcxEpIsEshk4bAMblXf-Rmdr7739ii9qvG/exec';
+    fetch(sheetURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ name, phone, email, message })
+    }).catch(err => console.log('Sheet error:', err));
+
     const text =
 `مرحبًا propool، أنا ${name}
 📱 الهاتف: ${phone}
 ✉️ البريد: ${email}
 📝 الرسالة: ${message}`;
 
-    const whatsappNumber = '96555571687'; // رقم واتساب بروبول
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+const whatsappNumber = '201024391262'; // ⚠️ رقم تجريبي مؤقت — رجّع 96555571687 بعد الاختبار
+     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
 
     window.open(url, '_blank');
   });
