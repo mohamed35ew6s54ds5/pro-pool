@@ -149,9 +149,19 @@ html[data-theme="dark"] .brand{color:#fff;}
   box-shadow:var(--shadow-soft);transition:transform .35s var(--ease), box-shadow .35s;
 }
 .nav-cta:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
-.burger span{width:26px;height:2px;background:var(--text);border-radius:2px;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;width:26px;height:20px;justify-content:center;position:relative;}
+.burger span{
+  width:26px;height:2px;background:var(--text);border-radius:2px;
+  transition:transform .35s var(--ease), opacity .25s var(--ease);
+  position:absolute;
+}
+.burger span:nth-child(1){transform:translateY(-7px);}
+.burger span:nth-child(2){opacity:1;}
+.burger span:nth-child(3){transform:translateY(7px);}
 
+.burger.active span:nth-child(1){transform:translateY(0) rotate(45deg);}
+.burger.active span:nth-child(2){opacity:0;}
+.burger.active span:nth-child(3){transform:translateY(0) rotate(-45deg);}
 /* ============ HERO ============ */
 .hero{
   min-height:70svh;display:flex;align-items:center;position:relative;overflow:hidden;
@@ -507,7 +517,13 @@ footer .flinks a:hover{color:var(--c-aqua);padding-inline-start:6px;}
 }
 .whatsapp-float svg{width:30px;height:30px;color:#fff;}
 @keyframes wa-pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
-
+.call-float{
+  position:fixed;bottom:104px;inset-inline-start:28px;z-index:400;
+  width:62px;height:62px;border-radius:50%;background:var(--c-ocean);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 30px -6px rgba(11,79,138,.55);transition:transform .35s var(--ease);
+}
+.call-float:hover{transform:translateY(-4px) scale(1.05);}
+.call-float svg{width:26px;height:26px;color:#fff;}
 .back-top{
   position:fixed;bottom:28px;inset-inline-end:28px;z-index:400;
   width:52px;height:52px;border-radius:50%;background:var(--c-ocean);color:#fff;display:flex;align-items:center;justify-content:center;
@@ -537,11 +553,11 @@ footer .flinks a:hover{color:var(--c-aqua);padding-inline-start:6px;}
     right:0;
     left:auto;
     height:100vh;
-    width:78%;
+    width:40%;
     background:var(--surface);
     flex-direction:column;
     justify-content:center;
-    gap:30px;
+    gap:20px;
 
     transform:translateX(110%);
     transition:transform .5s var(--ease);
