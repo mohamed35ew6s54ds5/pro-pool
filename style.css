@@ -45,7 +45,7 @@ html[data-theme="dark"]{
   --text-soft: rgba(234,244,249,0.65);
   --border-glass: rgba(255,255,255,0.08);
   --c-line: rgba(255,255,255,0.08);
-  --shadow-soft: 0 20px 60px -20px rgba(0,0,0,0.6);
+  --shadow-soft: 0 20px 61px -20px rgba(0,0,0,0.6);
   --shadow-lift: 0 30px 90px -20px rgba(0,0,0,0.7);
 }
 
