@@ -1,23 +1,5 @@
 /* ================= DATA ================= */
-const services = [
-  {icon:'M12 3c-4 4-7 7-7 10.5A7 7 0 0 0 12 21a7 7 0 0 0 7-7.5C19 10 16 7 12 3Z', ar:'تصميم المسابح', en:'Swimming Pool Design', dar:'تصاميم هندسية مخصصة تعكس ذوقك وتُراعي طبيعة الموقع.', den:'Bespoke engineering designs tailored to your taste and site.'},
-  {icon:'M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6', ar:'إنشاء المسابح', en:'Pool Construction', dar:'تنفيذ دقيق بأحدث التقنيات ومواد عالية الجودة.', den:'Precise execution with the latest techniques and premium materials.'},
-  {icon:'M4 4v16M4 4h16M4 12h16M4 20h16', ar:'ترميم المسابح', en:'Pool Renovation', dar:'إعادة حياة لمسبحك القديم بتشطيبات وتقنيات حديثة.', den:'Breathing new life into old pools with modern finishing.'},
-  {icon:'M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8', ar:'صيانة المسابح', en:'Pool Maintenance', dar:'خطط صيانة دورية تحافظ على نقاء المياه وسلامة المعدات.', den:'Regular maintenance plans keeping water pure and equipment safe.'},
-  {icon:'M12 22c4-4 8-7.58 8-12A8 8 0 0 0 4 10c0 4.42 4 8 8 12Z', ar:'الشلالات المائية', en:'Water Features', dar:'شلالات ونوافير مائية تضفي طابعًا فاخرًا على المكان.', den:'Waterfalls and fountains that add a luxurious touch.'},
-  {icon:'M9 3H5a2 2 0 0 0-2 2v4m18 0V5a2 2 0 0 0-2-2h-4m0 18h4a2 2 0 0 0 2-2v-4M3 15v4a2 2 0 0 0 2 2h4', ar:'تركيب المعدات', en:'Pool Equipment Installation', dar:'أنظمة فلترة وتسخين وإضاءة متطورة وموثوقة.', den:'Advanced, reliable filtration, heating and lighting systems.'},
-  {icon:'M12 2a5 5 0 0 1 5 5c0 3-2 5-2 8H9c0-3-2-5-2-8a5 5 0 0 1 5-5Z', ar:'إنشاء الجاكوزي', en:'Jacuzzi Construction', dar:'أحواض استرخاء فاخرة مصممة بعناية فائقة.', den:'Premium relaxation spas crafted with meticulous care.'},
-  {icon:'M12 2 2 22h20L12 2Z', ar:'تنسيق المناظر الطبيعية', en:'Landscaping Around Pools', dar:'تنسيق حدائق ومساحات محيطة تكمل جمال المسبح.', den:'Landscaping surrounding spaces that complete the pool experience.'}
-];
 
-const projects = [
-  {img:'ChatGPT Image Jul 9, 2026, 11_05_08 PM.png', tag:{ar:'مسابح لا نهائية',en:'Infinity Pools'}, title:{ar:'فيلا الشاطئ الذهبي',en:'Golden Coast Villa'}, loc:{ar:'الجهراء',en:'Jahra'}, type:{ar:'مسبح لا نهائي',en:'Infinity Pool'}, date:'2025'},
-  {img:'ChatGPT Image Jul 9, 2026, 11_05_08 PM.png', tag:{ar:'فلل خاصة',en:'Private Villas'}, title:{ar:'واحة السلام',en:'Al Salam Oasis'}, loc:{ar:'السالمية',en:'Salmiya'}, type:{ar:'مسبح فيلا',en:'Villa Pool'}, date:'2024'},
-  {img:'ChatGPT Image Jul 9, 2026, 11_05_08 PM.png', tag:{ar:'إضاءة ليلية',en:'Night Lighting'}, title:{ar:'لؤلؤة الخليج',en:'Gulf Pearl Residence'}, loc:{ar:'مدينة الكويت',en:'Kuwait City'}, type:{ar:'مسبح وإضاءة',en:'Pool & Lighting'}, date:'2024'},
-  {img:'ChatGPT Image Jul 9, 2026, 11_05_08 PM.png', tag:{ar:'فلل خاصة',en:'Private Villas'}, title:{ar:'قصر النخيل',en:'Palm Estate'}, loc:{ar:'الفنطاس',en:'Fintas'}, type:{ar:'مسبح عائلي',en:'Family Pool'}, date:'2023'},
-  {img:'ChatGPT Image Jul 9, 2026, 11_05_08 PM.png', tag:{ar:'جاكوزي',en:'Jacuzzi'}, title:{ar:'روضة الاسترخاء',en:'Serenity Garden'}, loc:{ar:'مشرف',en:'Mishref'}, type:{ar:'جاكوزي خارجي',en:'Outdoor Jacuzzi'}, date:'2023'},
-  {img:'ChatGPT Image Jul 9, 2026, 11_05_08 PM.png', tag:{ar:'مسابح لا نهائية',en:'Infinity Pools'}, title:{ar:'أفق بيان',en:'Bayan Horizon'}, loc:{ar:'بيان',en:'Bayan'}, type:{ar:'مسبح بانورامي',en:'Panoramic Pool'}, date:'2022'}
-];
 
 const testimonials = [
   {name:{ar:'user 1',en:'Eng. Fahad Al-Anzi'}, loc:{ar:'فيلا خاصة، الجهراء',en:'Private Villa, Jahra'}, img:'https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&w=100&q=80', q:{ar:'تجربة بروبول كانت استثنائية من أول اجتماع حتى تسليم المسبح. الدقة في التنفيذ والالتزام بالمواعيد أمر نادر.', en:'The PROPOOL experience was exceptional from our first meeting to handover. The precision and commitment to deadlines is rare to find.'}},
@@ -160,7 +142,7 @@ function renderFaq(){
 }
 
 function renderAll(){
-  renderServices(); renderProjects(); renderTestimonials(); renderPricing(); renderBlog(); renderGallery(); renderFaq();
+  renderTestimonials(); renderPricing(); renderBlog(); renderGallery(); renderFaq();
   observeReveal();
   bindLightbox();
 }
@@ -184,18 +166,19 @@ function applyLang(lang){
   localStorage.setItem('propool-lang', lang);
 }
 
-document.getElementById('langToggle').addEventListener('click',()=>{
-  applyLang(currentLang==='ar' ? 'en' : 'ar');
-});
-
+const langLabelEl = document.getElementById('langLabel');
+if(langLabelEl) langLabelEl.textContent = lang==='ar' ? 'English' : 'العربية';
 /* ================= THEME ================= */
 function applyTheme(theme){
   document.documentElement.setAttribute('data-theme', theme);
-  document.getElementById('themeLabel').setAttribute('data-ar', theme==='dark' ? 'الوضع الفاتح':'الوضع الداكن');
-  document.getElementById('themeLabel').setAttribute('data-en', theme==='dark' ? 'Light Mode':'Dark Mode');
-  document.getElementById('themeLabel').textContent = currentLang==='ar'
-    ? (theme==='dark' ? 'الوضع الفاتح':'الوضع الداكن')
-    : (theme==='dark' ? 'Light Mode':'Dark Mode');
+  const themeLabelEl = document.getElementById('themeLabel');
+  if(themeLabelEl){
+    themeLabelEl.setAttribute('data-ar', theme==='dark' ? 'الوضع الفاتح':'الوضع الداكن');
+    themeLabelEl.setAttribute('data-en', theme==='dark' ? 'Light Mode':'Dark Mode');
+    themeLabelEl.textContent = currentLang==='ar'
+      ? (theme==='dark' ? 'الوضع الفاتح':'الوضع الداكن')
+      : (theme==='dark' ? 'Light Mode':'Dark Mode');
+  }
   localStorage.setItem('propool-theme', theme);
 }
 document.getElementById('themeToggle').addEventListener('click',()=>{
@@ -215,7 +198,41 @@ window.addEventListener('scroll',()=>{
 });
 document.getElementById('backTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-const burger = document.getElementById('burger');
+const menuFloat = document.getElementById('menuFloat');
+const menuFloatPanel = document.getElementById('menuFloatPanel');
+if(menuFloat && menuFloatPanel){
+  const closeFloatMenu = ()=>{
+    menuFloat.classList.remove('active');
+    menuFloatPanel.classList.remove('open');
+  };
+
+  window.addEventListener('scroll',()=>{
+    menuFloat.classList.toggle('show', window.scrollY>500);
+    closeFloatMenu(); // يقفل القائمة مع أي سكرول
+  },{passive:true});
+
+  menuFloat.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    menuFloat.classList.toggle('active');
+    menuFloatPanel.classList.toggle('open');
+  });
+
+  // الضغط على أي مكان في الشاشة (برّه القائمة) يقفلها
+  document.addEventListener('click',(e)=>{
+    if(!menuFloatPanel.contains(e.target) && !menuFloat.contains(e.target)){
+      closeFloatMenu();
+    }
+  });
+
+  // اللمس على الموبايل
+  document.addEventListener('touchstart',(e)=>{
+    if(!menuFloatPanel.contains(e.target) && !menuFloat.contains(e.target)){
+      closeFloatMenu();
+    }
+  },{passive:true});
+
+  menuFloatPanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeFloatMenu));
+}const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 burger.addEventListener('click',()=>{
   navLinks.classList.toggle('open');
