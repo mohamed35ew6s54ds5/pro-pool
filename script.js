@@ -148,44 +148,212 @@ function renderAll(){
 }
 
 /* ================= I18N ================= */
+/* ================= I18N ================= */
+
 function applyLang(lang){
+
   currentLang = lang;
+
   document.documentElement.lang = lang;
-  document.documentElement.dir = lang==='ar' ? 'rtl' : 'ltr';
-  document.getElementById('langLabel').textContent = lang==='ar' ? 'English' : 'العربية';
 
-  document.querySelectorAll('[data-ar]').forEach(el=>{
-    const val = lang==='ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
-    if(val!==null) el.textContent = val;
-  });
-  document.querySelectorAll('[data-ar-ph]').forEach(el=>{
-    const val = lang==='ar' ? el.getAttribute('data-ar-ph') : el.getAttribute('data-en-ph');
-    if(val!==null) el.setAttribute('placeholder', val);
-  });
-  renderAll();
-  localStorage.setItem('propool-lang', lang);
-}
+  document.documentElement.dir =
+    lang === 'ar' ? 'rtl' : 'ltr';
 
-const langLabelEl = document.getElementById('langLabel');
-if(langLabelEl) langLabelEl.textContent = lang==='ar' ? 'English' : 'العربية';
-/* ================= THEME ================= */
-function applyTheme(theme){
-  document.documentElement.setAttribute('data-theme', theme);
-  const themeLabelEl = document.getElementById('themeLabel');
-  if(themeLabelEl){
-    themeLabelEl.setAttribute('data-ar', theme==='dark' ? 'الوضع الفاتح':'الوضع الداكن');
-    themeLabelEl.setAttribute('data-en', theme==='dark' ? 'Light Mode':'Dark Mode');
-    themeLabelEl.textContent = currentLang==='ar'
-      ? (theme==='dark' ? 'الوضع الفاتح':'الوضع الداكن')
-      : (theme==='dark' ? 'Light Mode':'Dark Mode');
+
+  /* Language button */
+
+  const langLabel =
+    document.getElementById('langLabel');
+
+  if(langLabel){
+    langLabel.textContent =
+      lang === 'ar'
+        ? 'English'
+        : 'العربية';
   }
-  localStorage.setItem('propool-theme', theme);
-}
-document.getElementById('themeToggle').addEventListener('click',()=>{
-  const cur = document.documentElement.getAttribute('data-theme');
-  applyTheme(cur==='dark' ? 'light' : 'dark');
-});
 
+
+  /* Translate all elements */
+
+  document
+    .querySelectorAll('[data-ar]')
+    .forEach(el => {
+
+      const val =
+        lang === 'ar'
+          ? el.getAttribute('data-ar')
+          : el.getAttribute('data-en');
+
+      if(val !== null){
+        el.textContent = val;
+      }
+
+    });
+
+
+  /* Translate placeholders */
+
+  document
+    .querySelectorAll('[data-ar-ph]')
+    .forEach(el => {
+
+      const val =
+        lang === 'ar'
+          ? el.getAttribute('data-ar-ph')
+          : el.getAttribute('data-en-ph');
+
+      if(val !== null){
+        el.setAttribute('placeholder', val);
+      }
+
+    });
+
+
+  /* Re-render dynamic sections */
+
+  renderAll();
+
+
+  /* Save language */
+
+  localStorage.setItem(
+    'propool-lang',
+    lang
+  );
+}
+
+
+/* ================= LANGUAGE TOGGLE ================= */
+
+const langToggle =
+  document.getElementById('langToggle');
+
+if(langToggle){
+
+  langToggle.addEventListener('click', () => {
+
+    const newLang =
+      currentLang === 'ar'
+        ? 'en'
+        : 'ar';
+
+    applyLang(newLang);
+
+  });
+
+}
+
+
+/* ================= THEME ================= */
+
+function applyTheme(theme){
+
+  document.documentElement
+    .setAttribute('data-theme', theme);
+
+
+  const themeLabel =
+    document.getElementById('themeLabel');
+
+  if(themeLabel){
+
+    themeLabel.setAttribute(
+      'data-ar',
+      theme === 'dark'
+        ? 'الوضع الفاتح'
+        : 'الوضع الداكن'
+    );
+
+    themeLabel.setAttribute(
+      'data-en',
+      theme === 'dark'
+        ? 'Light Mode'
+        : 'Dark Mode'
+    );
+
+
+    themeLabel.textContent =
+      currentLang === 'ar'
+        ? (
+            theme === 'dark'
+              ? 'الوضع الفاتح'
+              : 'الوضع الداكن'
+          )
+        : (
+            theme === 'dark'
+              ? 'Light Mode'
+              : 'Dark Mode'
+          );
+
+  }
+
+
+  /* Change icon */
+
+  const themeIcon =
+    document.getElementById('themeIcon');
+
+  if(themeIcon){
+
+    if(theme === 'dark'){
+
+      themeIcon.innerHTML = `
+        <path d="M12 3v2"/>
+        <path d="M12 19v2"/>
+        <path d="m4.22 4.22 1.42 1.42"/>
+        <path d="m18.36 18.36 1.42 1.42"/>
+        <path d="M3 12h2"/>
+        <path d="M19 12h2"/>
+        <path d="m4.22 19.78 1.42-1.42"/>
+        <path d="m18.36 5.64 1.42-1.42"/>
+        <circle cx="12" cy="12" r="4"/>
+      `;
+
+    }else{
+
+      themeIcon.innerHTML = `
+        <path d="M21 12.79A9 9 0 1 1
+        11.21 3 7 7 0 0 0 21 12.79Z"/>
+      `;
+
+    }
+
+  }
+
+
+  localStorage.setItem(
+    'propool-theme',
+    theme
+  );
+
+}
+
+
+/* Theme button */
+
+const themeToggle =
+  document.getElementById('themeToggle');
+
+if(themeToggle){
+
+  themeToggle.addEventListener(
+    'click',
+    () => {
+
+      const currentTheme =
+        document.documentElement
+          .getAttribute('data-theme') || 'light';
+
+      applyTheme(
+        currentTheme === 'dark'
+          ? 'light'
+          : 'dark'
+      );
+
+    }
+  );
+
+}
 /* ================= NAV ================= */
 const mainNav = document.getElementById('mainNav');
 window.addEventListener('scroll',()=>{
@@ -198,47 +366,16 @@ window.addEventListener('scroll',()=>{
 });
 document.getElementById('backTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-const menuFloat = document.getElementById('menuFloat');
-const menuFloatPanel = document.getElementById('menuFloatPanel');
-if(menuFloat && menuFloatPanel){
-  const closeFloatMenu = ()=>{
-    menuFloat.classList.remove('active');
-    menuFloatPanel.classList.remove('open');
-  };
-
-  window.addEventListener('scroll',()=>{
-    menuFloat.classList.toggle('show', window.scrollY>500);
-    closeFloatMenu(); // يقفل القائمة مع أي سكرول
-  },{passive:true});
-
-  menuFloat.addEventListener('click',(e)=>{
-    e.stopPropagation();
-    menuFloat.classList.toggle('active');
-    menuFloatPanel.classList.toggle('open');
-  });
-
-  // الضغط على أي مكان في الشاشة (برّه القائمة) يقفلها
-  document.addEventListener('click',(e)=>{
-    if(!menuFloatPanel.contains(e.target) && !menuFloat.contains(e.target)){
-      closeFloatMenu();
-    }
-  });
-
-  // اللمس على الموبايل
-  document.addEventListener('touchstart',(e)=>{
-    if(!menuFloatPanel.contains(e.target) && !menuFloat.contains(e.target)){
-      closeFloatMenu();
-    }
-  },{passive:true});
-
-  menuFloatPanel.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeFloatMenu));
-}const burger = document.getElementById('burger');
+const menu = document.getElementById('menu');
 const navLinks = document.getElementById('navLinks');
-burger.addEventListener('click',()=>{
+menu.addEventListener('click',()=>{
   navLinks.classList.toggle('open');
-  burger.classList.toggle('active');
-});navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-
+  menu.classList.toggle('active');
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navLinks.classList.remove('open');
+  menu.classList.remove('active');
+}));
 /* ================= REVEAL ON SCROLL ================= */
 function observeReveal(){
   const els = document.querySelectorAll('.reveal:not(.in), .reveal-scale:not(.in)');
@@ -370,6 +507,43 @@ window.addEventListener('load',()=>{
   setTimeout(()=>document.getElementById('preloader').classList.add('hide'),600);
 });
 
+/* ================= INIT ================= */
+
+window.addEventListener('load', () => {
+
+  setTimeout(() => {
+
+    const preloader =
+      document.getElementById('preloader');
+
+    if(preloader){
+      preloader.classList.add('hide');
+    }
+
+  }, 600);
+
+});
+
+
+/* Restore saved language */
+
+const savedLang =
+  localStorage.getItem('propool-lang') ||
+  document.documentElement.lang ||
+  'ar';
+
+
+/* Restore saved theme */
+
+const savedTheme =
+  localStorage.getItem('propool-theme') ||
+  'light';
+
+
+/* Initial render */
+
 renderAll();
-applyLang(document.documentElement.lang);
-applyTheme('light');
+
+applyLang(savedLang);
+
+applyTheme(savedTheme);
